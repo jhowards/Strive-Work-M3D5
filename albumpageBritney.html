@@ -19,9 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <title>Spotify Clone</title>
-    <script>
-      let artistTitle = "Queen";
-      sessionStorage.setItem("artisttitle", artistTitle);</script>
+
     
 
     <style>
@@ -715,10 +713,10 @@ body{
 <script>
 
 function showAlbumInfo(albumInfo) {
-  let albumImage = document.getElementById("madonnaImage")
+  let albumImage = document.getElementById("cherImage")
   albumImage.src = albumInfo.cover_medium
 
-  let albumTitle = document.getElementById("madonnaTitle")
+  let albumTitle = document.getElementById("cherTitle")
   albumTitle.innerText = albumInfo.title
 
   let artistName = document.getElementsByTagName("span")
@@ -730,7 +728,7 @@ function showAlbumInfo(albumInfo) {
     artistName[i].innerText = albumInfo.artist.name
   }
 
-  let artistPicture = document.getElementById("madonnaPicture")
+  let artistPicture = document.getElementById("cherPicture")
   artistPicture.src = albumInfo.artist.picture_small
 
   let songTitle = document.getElementsByClassName("titletext")
@@ -738,14 +736,14 @@ function showAlbumInfo(albumInfo) {
   for (let j = 0; j < songTitle.length; j++) {
     let keepSome = songTitle[j].innerText
     keepSome = keepSome.split("")
-    keepSome = keepSome.slice(-1 * 8)
+    keepSome = keepSome.slice(-1 * 15)
     songTitle[j].innerText = albumInfo.tracks.data[j].title
     songTitle[j].innerText += keepSome.join("")
   }
 }
 
 window.addEventListener('load', event => {
-  fetch("https://striveschool-api.herokuapp.com/api/deezer/album/80554")
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/album/1421245")
   .then( response => response.json())
   .then(albumInfo => {
     console.log(albumInfo)
@@ -868,12 +866,12 @@ function changeStyle() {
 
 
           <div class="container-fluid p-0 coverbox" >
-            <img id="madonnaImage" src="/Bohemian_Rhapsody_album.jpg" class="img-fluid bohemian" alt="Bohemian Rhapsody Album Cover">
+            <img id="cherImage" src="/Bohemian_Rhapsody_album.jpg" class="img-fluid bohemian" alt="Bohemian Rhapsody Album Cover">
             <div class="covertextbox">
                 <h5 class="albumcovertext" style="font-size:13px; font-weight:700;">ALBUM</h5>
-                <h1 id="madonnaTitle" class="albumcovertext" style="letter-spacing: -1px;">Bohemian Rhapsody (The Original Soundtrack)</h1>
-                <span style="padding-right:3px; padding-top: 3px; display:inline-block;"><img id="madonnaPicture" class="queensmallImg" src="/queenband.jfif"></img></span>
-                <span id="madonnaName" class="albumcovertext mr-2" style="font-size:13px; font-weight:700;">Queen</span><span class="albumcovertextsmall">• 2018 • 22 songs, 1 hr 19 min</span>
+                <h1 id="cherTitle" class="albumcovertext" style="letter-spacing: -1px;">Bohemian Rhapsody (The Original Soundtrack)</h1>
+                <span style="padding-right:3px; padding-top: 3px; display:inline-block;"><img id="cherPicture" class="queensmallImg" src="/queenband.jfif"></img></span>
+                <span id="cherName" class="albumcovertext mr-2" style="font-size:13px; font-weight:700;">Queen</span><span class="albumcovertextsmall">• 2018 • 22 songs, 1 hr 19 min</span>
             </div>
        
           </div>
@@ -960,6 +958,16 @@ function changeStyle() {
                         <th class="tablenumbers" scope="row">11</th>
                         <td class="titletext">We Will Rock You - Movie Mix<br/> <span class="alttext">Queen</span></td>
                         <td class="alttext">2:09</td>
+                      </tr>
+                    <tr>
+                        <th class="tablenumbers" scope="row">12</th>
+                        <td class="titletext">Another One Bites The Dust<br/> <span class="alttext">Queen</span></td>
+                        <td class="alttext">3:34</td>
+                      </tr>
+                    <tr>
+                        <th class="tablenumbers" scope="row">13</th>
+                        <td class="titletext">I Want To Break Free<br/> <span class="alttext">Queen</span></td>
+                        <td class="alttext">3:43</td>
                       </tr>
                   </tbody>
   

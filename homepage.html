@@ -682,6 +682,58 @@
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
     crossorigin="anonymous"></script>
 
+<script>
+      let artistTitle = "Queen";
+      sessionStorage.setItem("artisttitle", artistTitle);</script>
+
+<script>
+
+function showAlbumInfo(albumInfo, imageId, titleId) {
+  let albumImage = document.getElementById(imageId)
+  albumImage.src = albumInfo.cover_medium
+
+  let albumTitle = document.getElementById(titleId)
+  albumTitle.innerText = albumInfo.title
+}
+
+function compare(a, b) {
+  if (a.id < b.id) {
+    return -1;
+  }
+  if (a.last_nom > b.last_nom) {
+    return 1;
+  }
+  return 0;
+}
+
+window.addEventListener('load', event => {
+  let fetchString = "https://striveschool-api.herokuapp.com/api/deezer/album/"
+  let idArray = [80554, 100323, 98404972, 92071, 250046, 151092632, 1421245, 182811182]
+  let objectList = []
+  for (let i = 0; i < idArray.length; i++) {
+    fetch(fetchString + idArray[i].toString())
+    .then(response => response.json())
+    .then(albumInfo => {
+      objectList.push(albumInfo)
+    })
+    .then(blank => {
+      console.log(objectList)
+      objectList.sort(compare)
+      showAlbumInfo(objectList[0], "madonnaImage", "madonnaTitle")
+      showAlbumInfo(objectList[1], "cherImage", "cherTitle")
+      showAlbumInfo(objectList[2], "abbaImage", "abbaTitle")
+      showAlbumInfo(objectList[3], "beyonceImage", "beyonceTitle")
+      showAlbumInfo(objectList[4], "mileyImage", "mileyTitle")
+      showAlbumInfo(objectList[5], "gagaImage", "gagaTitle")
+      showAlbumInfo(objectList[5], "britneyImage", "britneyTitle")
+      showAlbumInfo(objectList[5], "duaLipaImage", "duaLipaTitle")
+    })
+  }
+  // console.log(objectList[0])
+  // showAlbumInfo(objectList[0], "madonnaImage", "madonnaTitle")
+})
+
+</script>
 
   <div class="container-fluid flexbody">
 
@@ -1018,83 +1070,93 @@
             <div class="col mb-4">
               <a href="/albumpage.html" class="custom-card">
                 <div class="card p-2 bg-customdark">
-                  <img src="/Bohemian_Rhapsody_album.jpg" class="card-img-top" alt="...">
+                  <img id="madonnaImage" src="/Bohemian_Rhapsody_album.jpg" class="card-img-top" alt="...">
                   <div class="card-body" style="max-height:70px;">
-                    <span class="card-title">Bohemian Rhapsody</span>
+                    <span class="card-title" id="madonnaTitle">Bohemian Rhapsody</span>
                     <p class="card-text"></p>
                   </div>
                 </div>
               </a>
-            </div>
+              </div>
+     
+              <div class="col mb-4">
+                <a href="/albumpageCher.html" class="custom-card">
 
-            <div class="col mb-4">
-              <a href="/artistpage.html" class="custom-card">
                 <div class="card p-2 bg-customdark">
-                  <img src="/200defleppard-optical.jpg" class="card-img-top" alt="...">
+                  <img id="cherImage" src="/200defleppard-optical.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
+                    <h5 class="card-title" id="cherTitle">Artist Name</h5>
                     <p class="card-text"></p>
                   </div>
                 </div>
               </a>
-            </div>
 
-            <div class="col mb-4 d-none d-md-block">
-              <div class="card p-2 bg-customdark">
-                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Artist Name</h5>
-                  <p class="card-text"></p>
+              </div>
+    
+              <div class="col mb-4 d-none d-md-block">
+              <a href="/albumpageAbba.html" class="custom-card">
+                <div class="card p-2 bg-customdark">
+                  <img id="abbaImage" src="https://picsum.photos/100" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" id="abbaTitle">Artist Name</h5>
+                    <p class="card-text"></p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col mb-4 d-none d-lg-block">
-              <div class="card p-2 bg-customdark">
-                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Artist Name</h5>
-                  <p class="card-text"></p>
+    
+              <div class="col mb-4 d-none d-lg-block">
+              <a href="/albumpageBeyonce.html" class="custom-card">
+                <div class="card p-2 bg-customdark">
+                  <img id="beyonceImage" src="https://picsum.photos/100" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" id="beyonceTitle">Artist Name</h5>
+                    <p class="card-text"></p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col mb-4 d-none d-lg-block">
-              <div class="card p-2 bg-customdark">
-                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Artist Name</h5>
-                  <p class="card-text"></p>
+    
+              <div class="col mb-4 d-none d-lg-block">
+              <a href="/albumpageBritney.html" class="custom-card">
+                <div class="card p-2 bg-customdark">
+                  <img id="mileyImage" src="https://picsum.photos/100" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" id="mileyTitle">Artist Name</h5>
+                    <p class="card-text"></p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col mb-4 d-none d-xl-block">
-              <div class="card p-2 bg-customdark">
-                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Artist Name</h5>
-                  <p class="card-text"></p>
+    
+              <div class="col mb-4 d-none d-xl-block">
+               <a href="/albumpageMiley.html" class="custom-card">
+                <div class="card p-2 bg-customdark">
+                  <img id="gagaImage" src="https://picsum.photos/100" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" id="gagaTitle">Artist Name</h5>
+                    <p class="card-text"></p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col mb-4 d-none xxlGrid">
-              <div class="card p-2 bg-customdark">
-                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Artist Name</h5>
-                  <p class="card-text"></p>
+    
+              <div class="col mb-4 d-none xxlGrid">
+             <a href="/albumpageGaga.html" class="custom-card">
+                <div class="card p-2 bg-customdark">
+                  <img id="britneyImage" src="https://picsum.photos/100" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" id="britneyTitle">Artist Name</h5>
+                    <p class="card-text"></p>
+                  </div>
                 </div>
               </div>
-            </div>
+    
+              <div class="col d-none xxlGrid">
+              <a href="/albumpageDuaLipa.html" class="custom-card">
+                <div class="card p-2 bg-customdark">
+                  <img id="duaLipaImage" src="https://picsum.photos/100" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" id="duaLipaTitle">Artist Name</h5>
+                    <p class="card-text"></p>
+                  </div>
 
-            <div class="col d-none xxlGrid">
-              <div class="card p-2 bg-customdark">
-                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Artist Name</h5>
-                  <p class="card-text"></p>
                 </div>
               </div>
             </div>
