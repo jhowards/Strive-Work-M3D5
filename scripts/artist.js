@@ -16,12 +16,20 @@ const grabAPI = (title) => {
     })
     .then((artist) => {
       console.log(artist.data);
-      const songsToDisplay = 5;
+      const songsToDisplay = 8;
+
+      const monthlyListeners = document.getElementById("monthly");
+      listeners = Math.floor(Math.random() * 30000000) + 1000000;
+      listeners2 = listeners.toLocaleString();
+
+      monthlyListeners.innerText = listeners2 + " monthly listeners";
 
       const headerImage = document.getElementById("headerImage");
       const image = artist.data[0].artist.picture_xl;
-      console.log(image);
-      headerImage.style.backgroundImage = `url("${image}")`;
+      headerImage.style.backgroundImage = ` linear-gradient(
+        rgba(10, 10, 10, 0.25), 
+        rgba(10, 10, 10, 0.25)
+      ),url("${image}")`;
 
       for (let i = 0; i < artist.data.length; i++) {
         if (i == songsToDisplay) {
@@ -49,8 +57,8 @@ const grabAPI = (title) => {
         songTitle.classList.add("w-50");
         songTitle.classList.add("px-1");
 
-        randomListens = Math.floor(Math.random() * 30000000) + 1000000;
-        listens = randomListens.toLocaleString();
+        let randomListens = Math.floor(Math.random() * 300000000) + 1000000;
+        let listens = randomListens.toLocaleString();
 
         songListens.innerText = listens;
 
