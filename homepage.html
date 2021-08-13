@@ -735,10 +735,34 @@
               <input type="text" placeholder="Search for album or artist" class="form-control" id="searchModal"
                 oninput=searchAlbumArtist(this.value)>
             </div>
-            <!-- <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div> -->
+            <div class="modal-footer">
+
+              <div class="container d-flex flex-wrap mx-5">
+                <h3 class="text-center text-dark m-5">Albums and Artists Lists</h3>
+
+                <div class="mb-5">
+                  <h4 class="text-center border-bottom text-dark">Albums</h4>
+                  <div id="album-list" class="row">
+                  </div>
+                </div>
+                <div>
+                  <h4 class="text-center border-bottom text-dark">Artist</h4>
+                  <div id="artist-list" class="row"></div>
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+
+
+              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
           </div>
         </div>
       </div>
@@ -989,7 +1013,7 @@
 
       </div>
       <div class="container-fluid mt-5">
-
+        <h3></h3>
         <section>
 
           <div class=" d-flex align-items-center justify-content-between">
@@ -1244,16 +1268,45 @@
             fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`)
               .then((response) => response.json())
               .then(body => {
-                displayAlbumOrArtist(body.data)
+                displayAlbum(body.data)
+                displayArtist(body.data)
+
                 console.log(body.data)
               })
           }
 
-          const displayAlbumOrArtist = (data) => {
+          const displayAlbum = (data) => {
+            const album = document.getElementById("album-list")
+            album.innerHTML = ""
             data.map(item => {
-              console.log(item.artist)
+              album.innerHTML += `
+<div class="card m-3" style="width: 8rem;">
+  <img src="${item.album.cover_small}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <span class="card-title text-dark" style="font-size: 12px;">${item.album.title}</span>
+  </div>
+</div>
+    `
+              console.log(item.album)
             })
           }
+
+          const displayArtist = (data) => {
+            const artist = document.getElementById("artist-list")
+            artist.innerHTML = ""
+            data.map(itm => {
+              artist.innerHTML += `
+              <div class="card m-3" style="width: 8rem;">
+  <img src="${itm.artist.picture_small}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <span class="card-title text-dark" style="font-size: 12px;">${itm.artist.name}</span>
+  </div>
+</div>
+    `
+              console.log(itm.artist)
+            })
+          }
+
           window.onload = () => {
             getAlbumAndArtist()
           }
