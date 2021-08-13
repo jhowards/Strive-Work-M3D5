@@ -57,8 +57,8 @@ const grabAPI = (title) => {
         songTitle.classList.add("w-50");
         songTitle.classList.add("px-1");
 
-        randomListens = Math.floor(Math.random() * 30000000) + 1000000;
-        listens = randomListens.toLocaleString();
+        let randomListens = Math.floor(Math.random() * 300000000) + 1000000;
+        let listens = randomListens.toLocaleString();
 
         songListens.innerText = listens;
 
