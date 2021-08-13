@@ -1,680 +1,689 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-      crossorigin="anonymous"
-    />
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <title>Spotify Clone</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
 
-    <style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+  <title>Spotify Clone</title>
+
+  <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-body{ 
-    background-color:rgb(18,18,18);
-    margin: 0px;
-    font-family: "Montserrat", sans-serif;
-}
-      .sidebar {
-        background-color: black;
-        color: rgb(166, 166, 166);
-        padding-top: 25px;
-        padding-left: 10px;
-        padding-right: 3px;
-        font-family: "Montserrat", sans-serif;
-        display: flex;
-         flex-direction: column;
-         height: 100%;
-         /* min-width: 13vw; */
-         width:35%;
-         /* min-width: 23vw; */
-         
-        
-      }
-      .logo {
-        height: 40px;
-        filter: invert(100%);
-        margin-left: 12px;
-        margin-bottom: 25px;
-      }
+    body {
+      background-color: rgb(18, 18, 18);
+      margin: 0px;
+      font-family: "Montserrat", sans-serif;
+    }
 
-      .sidebar-brand{
-        /* overflow-y:hidden */
-      }
-      .sidebar-nav {
-        list-style-type: none;
-        padding: 0;
-        font-size: 13px;
-        font-weight: bold;
-        margin: 0;
-        padding: 0;
-        line-height: 16px;
-      }
-      a {
-        color: inherit;
-      }
-      a:hover {
-        color: inherit;
-        text-decoration: none;
-      }
-      .sidelist {
-        display: flex;
-        height: 40px;
-        width: 220px;
-        border-radius: 4px;
-        align-items: center;
-      }
-
-      .sidelist:hover {
-        display: flex;
-        height: 40px;
-        width: 220px;
-        
-        border-radius: 4px;
-        color:white;
-      }
-    
-      .sidelistcurrent{
-          display: flex;
-        height: 40px;
-        margin-right: 7px;
-        border-radius: 4px;
-        align-items: center;
-        background-color: rgb(66, 66, 66);
-        color:white;
-      }
-      .sidelistcurrent:hover{
-        display: flex;
-        height: 40px;
-        border-radius: 4px;
-        align-items: center;
-        background-color: rgb(66, 66, 66);
-        color:white;
-      }
-      .navitem {
-        padding-left: 14px;
-        padding-right: 14px;
-      }
-
-      .sidebar hr{
-          background-color:rgb(70, 70, 70);
-          width:87%;
-          margin-top: 0.8rem;
-          margin-bottom: 0rem;
-      }
-
-      .sidebar-playlists{
-
-          list-style-type: none;
-          padding: 0;
-          font-size: 13px;
-          margin: 0;
-          padding: 0;
-          overflow: auto;
-   
-      }
-
-      .sideplaylist{
-        margin-top: 0.8rem;
-        padding-left: 14px;
-        padding-right: 14px;
-        line-height: 20px;
-        font-size: 13px;
-        margin-bottom: 10px;
-        font-weight:500;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-   
-      #installapp{
-          bottom: 0;
-          left: 0;
-          padding-left:15px;
-          font-weight:bold;
-          font-size: 13px;
-          margin-top: 2px;
-          margin-bottom:7px;
-      }
-
-      #installapp:hover{
-          color:white;
-          bottom: 0;
-          left: 0;
-          padding-left:15px;
-          font-weight:bold;
-          font-size: 13px;
-      }
-
-      ::-webkit-scrollbar {
-         width: 12px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color:rgb(73, 73, 73);
-        }
-
-        #heart{
-            display: inline-block;
-            position:relative;
-            padding-left: 14px;
-        }
-        #heartbox{
-            display:relative;
-            height:24px;
-            width: 24px;
-            background: rgb(55,21,170);
-            background: linear-gradient(148deg, rgba(55,21,170,1) 20%, rgba(133,112,203,1) 66%, rgba(165,153,221,1) 100%);
-            
-        }
-        .heartshape{
-            position:absolute;
-            top: 31%;
-            left: 54%;
-            
-        }
-
-        .playlistitem:hover{
-        color:white;
-        }
-
-        .mainbackground{
-            height:35vh;
-            background: rgb(61,7,7);
-            background: linear-gradient(180deg, rgba(61,7,7,1) 36%, rgba(61,7,7,0.7679446778711485) 51%, rgba(165,153,221,0) 100%);
-            z-index: -1;
-            position: absolute;
-                top: 0;
-                left: 0;
-                padding:0;
-        }
-
-        .mainbody{
-          padding-left:0;
-            margin-left:0;
-            overflow:auto;
-            padding-right:10px;
-            overflow-x:hidden;
-           }
-        
-        .morningtext{
-           color:white; 
-           font-weight: 700;
-            font-size: 28px;
-            font-family: "Montserrat", sans-serif;
-            
-        }
-
-        .card{
-            background-color: rgba(124, 124, 124, 0.3);  
-        }
-
-        .card:hover{
-          background-color: rgba(155, 155, 155, 0.3);  
-        }
-
-        .card-body{
-           color:white;
-           font-weight:bold;
-           padding-left: 0px;
-           font-size: 14px;
-           display: flex;
-           height:100%;
-        }
-        .circle{
-          position:relative;
-          height: 3.5vh;
-          width: 3.5vh;
-          background-color: rgb(0, 0, 0);
-          border-radius: 50%;
-          opacity: 60%;
-          display: inline-block;
-        }
-        
-        .arrow{
-          border: solid white;
-          border-width: 0 3px 3px 0;
-          display: inline-block;
-          padding: 0.6vh;
-          border-radius:3px;
-          position:absolute;
-          top: 0.96vh;
-        }
-
-        .left{
-          transform: rotate(135deg);
-           -webkit-transform: rotate(135deg);
-          left: 1.28vh;
-  
-        }
-
-        .right{
-          transform: rotate(-45deg);
-          -webkit-transform: rotate(-45deg);
-          right: 1.28vh;
-        }
-      
-        .cardimage{
-          border-top-left-radius: .25rem;
-          border-bottom-left-radius: .25rem;
-        }
+    .sidebar {
+      background-color: black;
+      color: rgb(166, 166, 166);
+      padding-top: 25px;
+      padding-left: 10px;
+      padding-right: 3px;
+      font-family: "Montserrat", sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      /* min-width: 13vw; */
+      width: 35%;
+      /* min-width: 23vw; */
 
 
-        .flexbody{
-          display:flex;
-          height:90.5vh;
-          margin:0;
-          padding:0;
-          flex-direction:row;
-        }
-        .stickynav{
-          position:fixed;
-          height:5%;
-          padding-top: 1.5vh;
-          padding-left: 2.3vh;
-          z-index: 4;
-          width:84%;
-          padding-bottom: 50px;
-        }
+    }
 
-        .bodycontent{
-          background: rgb(61,7,7);
-            background: linear-gradient(180deg, rgba(61,7,7,1) 36%, rgba(61,7,7,0.7679446778711485) 51%, rgba(165,153,221,0) 100%);
-            padding:0;
-            display:flex;
-              flex-direction: column;
-              width:100%;
-              margin: 0;
-            padding-top:25px;
-              padding-left:30px;
-              margin-right: -10px;
-        }
+    .logo {
+      height: 40px;
+      filter: invert(100%);
+      margin-left: 12px;
+      margin-bottom: 25px;
+    }
 
-        .useraccount{
-          width:185px;
-          height:30px;
-          border-radius: 25px;
-          background-color: RGBA(0,0,0,0.70);
-          position: relative;
-         
-        }
+    .sidebar-brand {
+      /* overflow-y:hidden */
+    }
 
-        .navcontent{
-          width:96%;
-          display: flex;
-          justify-content: space-between;
-          flex-direction: row;
-        }
+    .sidebar-nav {
+      list-style-type: none;
+      padding: 0;
+      font-size: 13px;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      line-height: 16px;
+    }
 
-        .personimage{
-          margin-top:2px;
-          margin-left:2px;
-          color:grey;
-        }
+    a {
+      color: inherit;
+    }
 
-        .persontext{
-          font-weight:bold;
-          font-size: 13px;
-          margin-left:4px;
-          color:white;
-          vertical-align: middle;
-          margin-right: 20px;
-        }
+    a:hover {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        .morningcard{
-          border: 0;
-        } 
+    .sidelist {
+      display: flex;
+      height: 40px;
+      width: 220px;
+      border-radius: 4px;
+      align-items: center;
+    }
 
-        .card-text{
-        max-height: 40px;
-        display:block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-right: 30px;
-          
-        }
+    .sidelist:hover {
+      display: flex;
+      height: 40px;
+      width: 220px;
 
-        .downarrow{
-          position:absolute;
-          right:11px;
-          top:10px;
-        }
+      border-radius: 4px;
+      color: white;
+    }
 
-        .personimage{
-          margin-top:2px;
-          margin-left:2px;
-          color:grey;
-        }
+    .sidelistcurrent {
+      display: flex;
+      height: 40px;
+      margin-right: 7px;
+      border-radius: 4px;
+      align-items: center;
+      background-color: rgb(66, 66, 66);
+      color: white;
+    }
 
-        .persontext{
-          font-weight:bold;
-          font-size: 13px;
-          margin-left:4px;
-          color:white;
-          vertical-align: middle;
-          margin-right: 20px;
-        }
+    .sidelistcurrent:hover {
+      display: flex;
+      height: 40px;
+      border-radius: 4px;
+      align-items: center;
+      background-color: rgb(66, 66, 66);
+      color: white;
+    }
 
-        .morningcard{
-          border: 0;
-        }
-        
-        .morningimg{
-          height: 100%;
-          object-fit:cover;
-          max-height:80px;
-          min-height: 80px;
-          /* max-width:80px; */
+    .navitem {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
 
-        }
+    .sidebar hr {
+      background-color: rgb(70, 70, 70);
+      width: 87%;
+      margin-top: 0.8rem;
+      margin-bottom: 0rem;
+    }
 
-        /* .container{
+    .sidebar-playlists {
+
+      list-style-type: none;
+      padding: 0;
+      font-size: 13px;
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+
+    }
+
+    .sideplaylist {
+      margin-top: 0.8rem;
+      padding-left: 14px;
+      padding-right: 14px;
+      line-height: 20px;
+      font-size: 13px;
+      margin-bottom: 10px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+
+    #installapp {
+      bottom: 0;
+      left: 0;
+      padding-left: 15px;
+      font-weight: bold;
+      font-size: 13px;
+      margin-top: 2px;
+      margin-bottom: 7px;
+    }
+
+    #installapp:hover {
+      color: white;
+      bottom: 0;
+      left: 0;
+      padding-left: 15px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(73, 73, 73);
+    }
+
+    #heart {
+      display: inline-block;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    #heartbox {
+      display: relative;
+      height: 24px;
+      width: 24px;
+      background: rgb(55, 21, 170);
+      background: linear-gradient(148deg, rgba(55, 21, 170, 1) 20%, rgba(133, 112, 203, 1) 66%, rgba(165, 153, 221, 1) 100%);
+
+    }
+
+    .heartshape {
+      position: absolute;
+      top: 31%;
+      left: 54%;
+
+    }
+
+    .playlistitem:hover {
+      color: white;
+    }
+
+    .mainbackground {
+      height: 35vh;
+      background: rgb(61, 7, 7);
+      background: linear-gradient(180deg, rgba(61, 7, 7, 1) 36%, rgba(61, 7, 7, 0.7679446778711485) 51%, rgba(165, 153, 221, 0) 100%);
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+    }
+
+    .mainbody {
+      padding-left: 0;
+      margin-left: 0;
+      overflow: auto;
+      padding-right: 10px;
+      overflow-x: hidden;
+    }
+
+    .morningtext {
+      color: white;
+      font-weight: 700;
+      font-size: 28px;
+      font-family: "Montserrat", sans-serif;
+
+    }
+
+    .card {
+      background-color: rgba(124, 124, 124, 0.3);
+    }
+
+    .card:hover {
+      background-color: rgba(155, 155, 155, 0.3);
+    }
+
+    .card-body {
+      color: white;
+      font-weight: bold;
+      padding-left: 0px;
+      font-size: 14px;
+      display: flex;
+      height: 100%;
+    }
+
+    .circle {
+      position: relative;
+      height: 3.5vh;
+      width: 3.5vh;
+      background-color: rgb(0, 0, 0);
+      border-radius: 50%;
+      opacity: 60%;
+      display: inline-block;
+    }
+
+    .arrow {
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 0.6vh;
+      border-radius: 3px;
+      position: absolute;
+      top: 0.96vh;
+    }
+
+    .left {
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+      left: 1.28vh;
+
+    }
+
+    .right {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      right: 1.28vh;
+    }
+
+    .cardimage {
+      border-top-left-radius: .25rem;
+      border-bottom-left-radius: .25rem;
+    }
+
+
+    .flexbody {
+      display: flex;
+      height: 90.5vh;
+      margin: 0;
+      padding: 0;
+      flex-direction: row;
+    }
+
+    .stickynav {
+      position: fixed;
+      height: 5%;
+      padding-top: 1.5vh;
+      padding-left: 2.3vh;
+      z-index: 4;
+      width: 84%;
+      padding-bottom: 50px;
+    }
+
+    .bodycontent {
+      background: rgb(61, 7, 7);
+      background: linear-gradient(180deg, rgba(61, 7, 7, 1) 36%, rgba(61, 7, 7, 0.7679446778711485) 51%, rgba(165, 153, 221, 0) 100%);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0;
+      padding-top: 25px;
+      padding-left: 30px;
+      margin-right: -10px;
+    }
+
+    .useraccount {
+      width: 185px;
+      height: 30px;
+      border-radius: 25px;
+      background-color: RGBA(0, 0, 0, 0.70);
+      position: relative;
+
+    }
+
+    .navcontent {
+      width: 96%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+
+    .personimage {
+      margin-top: 2px;
+      margin-left: 2px;
+      color: grey;
+    }
+
+    .persontext {
+      font-weight: bold;
+      font-size: 13px;
+      margin-left: 4px;
+      color: white;
+      vertical-align: middle;
+      margin-right: 20px;
+    }
+
+    .morningcard {
+      border: 0;
+    }
+
+    .card-text {
+      max-height: 40px;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 30px;
+
+    }
+
+    .downarrow {
+      position: absolute;
+      right: 11px;
+      top: 10px;
+    }
+
+    .personimage {
+      margin-top: 2px;
+      margin-left: 2px;
+      color: grey;
+    }
+
+    .persontext {
+      font-weight: bold;
+      font-size: 13px;
+      margin-left: 4px;
+      color: white;
+      vertical-align: middle;
+      margin-right: 20px;
+    }
+
+    .morningcard {
+      border: 0;
+    }
+
+    .morningimg {
+      height: 100%;
+      object-fit: cover;
+      max-height: 80px;
+      min-height: 80px;
+      /* max-width:80px; */
+
+    }
+
+    /* .container{
           width: auto;
         } */
-        .container-fluid{
-          width:auto;
-        }
+    .container-fluid {
+      width: auto;
+    }
 
 
-        /* Max's Footer CSS */
-        /*           */
-        /*           */
-        /*           */
-        /*           */
-        /*           */
-
-
-
-        .grow { transition: all .15s ease-in-out; }
-        .grow:hover { transform: scale(1.05); }
-
-          i{
-              color:lightgray;
-          }
+    /* Max's Footer CSS */
+    /*           */
+    /*           */
+    /*           */
+    /*           */
+    /*           */
 
 
 
-          i:hover{
-              color:white;
-          }
+    .grow {
+      transition: all .15s ease-in-out;
+    }
 
-            .footerli{
-                list-style: none;
-                display:inline-block;
-                color:white;
-            }
+    .grow:hover {
+      transform: scale(1.05);
+    }
 
-            h6{
-                font-size:0.9rem;
-            }
-
-            .footerp{
-                font-size:0.8rem;
-              margin-bottom:0;
-            }
-
-            .music-controls{
-              padding: 0;
-                height:9.5vh;
-                position:fixed;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                background-color: #181818;
-                border-top: 1px solid #282828;
-            }
-            .m-controls_album-image{
-                margin-top:auto;
-                margin-bottom:auto;
-                padding-right: 0;
-            }
-
-            .m-controls_album-image img{
-                width:60px;
-            }
-
-            .m-controls_album-artist_title {
-                padding:0.5rem;
-                margin-top: auto;
-                margin-bottom: auto;
-              padding-left:0;
-            }
-
-            .m-controls_album-artist_title h6{
-                color:white;
-
-            }
-
-            .m-controls_album-artist_title p{
-                color: grey;
-            }
-
-            .m-controls_album-artist_title h6:hover{
-                text-decoration: underline;
-                cursor:pointer;
-
-            }
-
-            .m-controls_album-artist_title p:hover{
-                color:white;
-                text-decoration:underline;
-                cursor:pointer;
-
-            }
-
-            .music-controls-row{
-              padding:0;
-              margin:auto;
-              margin-top: 0.7rem;
-
-            }
+    i {
+      color: lightgray;
+    }
 
 
-            .m-controls_like{
-                margin-top: auto;
-                margin-bottom:auto;
-              /* border:2px white solid; */
-            }
 
-            .m-controls_like i{
-                margin-left:0;
-                padding-left:0.75rem;
-            }
+    i:hover {
+      color: white;
+    }
 
-            .m-controls_controls{
-                display:block;
-                margin:0 auto;
-                align-content: space-between;
-                padding-right:2rem;
-            }
+    .footerli {
+      list-style: none;
+      display: inline-block;
+      color: white;
+    }
 
-            .m-controls_controls ul{
-                display:block;
-                margin:0 auto;
-                margin-right:1.8rem;
-            }
+    h6 {
+      font-size: 0.9rem;
+    }
 
-            .m-controls_controls li{
-                margin-left: 0.3rem;
-                margin-top:auto;
-                margin-bottom:auto;
-            }
+    .footerp {
+      font-size: 0.8rem;
+      margin-bottom: 0;
+    }
 
-            .m-controls_controls li i{
-                color:white;
-                padding:1rem;
-                margin-top:auto;
-                margin-bottom:auto;
-            }
+    .music-controls {
+      padding: 0;
+      height: 9.5vh;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #181818;
+      border-top: 1px solid #282828;
+    }
 
-            .music-controls_controls{
-                display:flex;
-                flex-direction: column;
-                justify-content: center;
+    .m-controls_album-image {
+      margin-top: auto;
+      margin-bottom: auto;
+      padding-right: 0;
+    }
 
-            }
+    .m-controls_album-image img {
+      width: 60px;
+    }
 
-            #play{
-                height:32px;
-                width:32px;
-                background-color: white;
-                border-radius: 50px;
-                position:relative;
+    .m-controls_album-artist_title {
+      padding: 0.5rem;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding-left: 0;
+    }
 
+    .m-controls_album-artist_title h6 {
+      color: white;
 
-            }
+    }
 
-            .play_triangle{
-                border-style:solid;
-                border-width:7px 0px 7px 11px;
-                border-color:transparent transparent transparent black;
-                position:absolute;
-                top:9px;
-                left:12px;
-            }
+    .m-controls_album-artist_title p {
+      color: grey;
+    }
 
-            .play-hover{
-                height:55px;
-                width:55px;
-                background-color: white;
-                border-radius: 50px;
-                position:absolute;
-                margin-right:1rem;
-                opacity:0;
-            }
+    .m-controls_album-artist_title h6:hover {
+      text-decoration: underline;
+      cursor: pointer;
 
-            .play-hover:hover{
-                opacity:1;
-            }
+    }
 
-            .m-controls_duration{
-                padding-bottom:0.6rem;
-                padding-top: 0.4rem;
+    .m-controls_album-artist_title p:hover {
+      color: white;
+      text-decoration: underline;
+      cursor: pointer;
 
-            }
+    }
 
-            .m-controls_duration hr{
-                display:block;
-                margin:0 auto;
-                height:5px;
-                background-color: white;
-                margin-top:0.5rem;
-                border-radius:50px;
-            }
+    .music-controls-row {
+      padding: 0;
+      margin: auto;
+      margin-top: 0.7rem;
+
+    }
 
 
-            .m-controls-extra{
-                padding-top:1.5rem;
-                padding-right:2rem;
-            }
+    .m-controls_like {
+      margin-top: auto;
+      margin-bottom: auto;
+      /* border:2px white solid; */
+    }
 
-            .m-controls-extra li{
-                position:relative;
-                padding-left:0.1rem;
-            }
+    .m-controls_like i {
+      margin-left: 0;
+      padding-left: 0.75rem;
+    }
 
-            .m-controls-extra ul{
-                position:relative;
+    .m-controls_controls {
+      display: block;
+      margin: 0 auto;
+      align-content: space-between;
+      padding-right: 2rem;
+    }
 
-            }
+    .m-controls_controls ul {
+      display: block;
+      margin: 0 auto;
+      margin-right: 1.8rem;
+    }
 
-            .slider {
-              -webkit-appearance: none;
-              width: 85%;
-              height: 4px;
-              border-radius: 5px;  
-              background: #d3d3d3;
-              outline: none;
-              opacity: 0.7;
-              -webkit-transition: .2s;
-              transition: opacity .2s;
-            }
+    .m-controls_controls li {
+      margin-left: 0.3rem;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
 
-            .slider:hover{
-                background:rgb(30 215 96);
-            }
+    .m-controls_controls li i {
+      color: white;
+      padding: 1rem;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
 
-            .slider::-webkit-slider-thumb {
-              -webkit-appearance: none;
-              appearance: none;
-              width: 13px;
-              height: 13px;
-              border-radius: 50%; 
-              background:white;
-              cursor: pointer;
-              opacity:0;
-            }
+    .music-controls_controls {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-            .slider::-webkit-slider-thumb:hover{
-                opacity:1;
-            }
+    }
 
-            .card-title{
-            font-size: 15px;
-            margin-left:6px;
-            font-weight:bold;
-            
-            
-              }
-                        .test {
-                  justify-content: center;
-                }
-
-                .test-img {
-                  height: 500px;
-                  width: auto;
-                }
-                
-                      @media (min-width:1425px) {
-            .xxlGrid {
-              display: block !important;
-            }
-          }
-
-          .bg-customdark{
-            background-color: #1b1b1b;
-          }
-
-          .bg-customdark:hover{
-            background-color: #414141;
-          }
-
-          a.custom-card,
-          a.custom-card:hover {
-            color: inherit;
-          }
-
-    </style>
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-  </head>
-  <body>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-      crossorigin="anonymous"
-    ></script>
+    #play {
+      height: 32px;
+      width: 32px;
+      background-color: white;
+      border-radius: 50px;
+      position: relative;
 
 
-   <div class="container-fluid flexbody">
+    }
+
+    .play_triangle {
+      border-style: solid;
+      border-width: 7px 0px 7px 11px;
+      border-color: transparent transparent transparent black;
+      position: absolute;
+      top: 9px;
+      left: 12px;
+    }
+
+    .play-hover {
+      height: 55px;
+      width: 55px;
+      background-color: white;
+      border-radius: 50px;
+      position: absolute;
+      margin-right: 1rem;
+      opacity: 0;
+    }
+
+    .play-hover:hover {
+      opacity: 1;
+    }
+
+    .m-controls_duration {
+      padding-bottom: 0.6rem;
+      padding-top: 0.4rem;
+
+    }
+
+    .m-controls_duration hr {
+      display: block;
+      margin: 0 auto;
+      height: 5px;
+      background-color: white;
+      margin-top: 0.5rem;
+      border-radius: 50px;
+    }
+
+
+    .m-controls-extra {
+      padding-top: 1.5rem;
+      padding-right: 2rem;
+    }
+
+    .m-controls-extra li {
+      position: relative;
+      padding-left: 0.1rem;
+    }
+
+    .m-controls-extra ul {
+      position: relative;
+
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 85%;
+      height: 4px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      background: rgb(30 215 96);
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+      opacity: 0;
+    }
+
+    .slider::-webkit-slider-thumb:hover {
+      opacity: 1;
+    }
+
+    .card-title {
+      font-size: 15px;
+      margin-left: 6px;
+      font-weight: bold;
+
+
+    }
+
+    .test {
+      justify-content: center;
+    }
+
+    .test-img {
+      height: 500px;
+      width: auto;
+    }
+
+    @media (min-width:1425px) {
+      .xxlGrid {
+        display: block !important;
+      }
+    }
+
+    .bg-customdark {
+      background-color: #1b1b1b;
+    }
+
+    .bg-customdark:hover {
+      background-color: #414141;
+    }
+
+    a.custom-card,
+    a.custom-card:hover {
+      color: inherit;
+    }
+  </style>
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
+
+
+  <div class="container-fluid flexbody">
 
     <div class="sidebar">
       <div class="sidebar-brand">
@@ -682,61 +691,107 @@ body{
       </div>
 
       <ul class="sidebar-nav flex-column">
-        <li class="sidelistcurrent"><a class="navitem" href="#"><span class="iconify mr-3" data-icon="el:home" data-inline="false" data-width="20px" data-height="20px"></span>Home</a></li>
-        <li class="sidelist"><a class="navitem" href="#"><span class="iconify mr-3" data-icon="akar-icons:search" data-inline="false" data-width="20" data-height="20"></span>Search</a></li>
-        <li class="sidelist"><a class="navitem" href="#"><img style="height: 24px; width: 24px; margin:0; margin-right:12px;" src="libraryicon.svg" alt="Library Icon" />Your Library</a></li>
+        <li class="sidelistcurrent"><a class="navitem" href="#"><span class="iconify mr-3" data-icon="el:home"
+              data-inline="false" data-width="20px" data-height="20px"></span>Home</a></li>
+        <li class="sidelist" data-toggle="modal"><a class="navitem" href="#"><span class="iconify mr-3"
+              data-icon="akar-icons:search" data-inline="false" data-width="20" data-height="20"></span>
+
+
+            <span type="button" class="" data-toggle="modal" data-target="#exampleModal">
+              Search
+            </span>
+          </a></li>
+        <li class="sidelist"><a class="navitem" href="#"><img
+              style="height: 24px; width: 24px; margin:0; margin-right:12px;" src="libraryicon.svg"
+              alt="Library Icon" />Your Library</a></li>
         <br />
         <li class="sidelist mt-2">
-          <a class="navitem" href="#"><span class="iconify createicon" data-icon="bi:plus-square-fill" data-inline="false" data-width="24" data-height="24" style="margin-right: 14px;"></span>Create Playlist</a>
+          <a class="navitem" href="#"><span class="iconify createicon" data-icon="bi:plus-square-fill"
+              data-inline="false" data-width="24" data-height="24" style="margin-right: 14px;"></span>Create
+            Playlist</a>
         </li>
         <li class="sidelist"> <span id="heart">
             <div id="heartbox">
-                    <span class="iconify heartshape" data-icon="bi:heart-fill" data-inline="false" data-width="11" data-height="11"></span> 
+              <span class="iconify heartshape" data-icon="bi:heart-fill" data-inline="false" data-width="11"
+                data-height="11"></span>
             </div>
-        </span>
-            <a class="navitem" href="#">
-           Liked Songs</a></li>
+          </span>
+          <a class="navitem" href="#">
+            Liked Songs</a>
+        </li>
       </ul>
 
-      <hr></hr>
+      <div class="modal-dialog modal-lg">Search artist</div>
 
-    <ul class="sidebar-playlists mb-2">
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Search</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="text" placeholder="Search for album or artist" class="form-control" id="searchModal"
+                oninput=searchAlbumArtist(this.value)>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      </hr>
+
+      <ul class="sidebar-playlists mb-2">
         <li class="sideplaylist"><a class="playlistitem" href="#">Funky Heavy Bluesy</a></li>
         <li class="sideplaylist"><a class="playlistitem" href="#">Your Top Songs 2020</a></li>
         <li class="sideplaylist"><a class="playlistitem" href="#">In Love With You - Erykah Badu</a>
-        <li class="sideplaylist"><a class="playlistitem" href="#">This Is Rod Stewart</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">FRANCHISE ft. Young Thug & M.I.A.</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Your Top Songs 2019</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Palleggio</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">This Is Joe Bonamassa</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jun19</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party 2 <span class="iconify" data-icon="ion:people-outline" data-inline="false" style="float:right;" data-width="20px" data-height="20px"></span></a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party <span class="iconify" data-icon="ion:people-outline" data-inline="false" style="float:right;" data-width="20px" data-height="20px"></span></a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">This Is Opeth</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Metal Ballads</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">New Playlist</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Your Top Songs 2018</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jazz Classics Blue Note Editi</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
-       
-        
+        <li class="sideplaylist"><a class="playlistitem" href="#">This Is Rod Stewart</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">FRANCHISE ft. Young Thug & M.I.A.</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Your Top Songs 2019</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Palleggio</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">This Is Joe Bonamassa</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jun19</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party 2 <span class="iconify"
+              data-icon="ion:people-outline" data-inline="false" style="float:right;" data-width="20px"
+              data-height="20px"></span></a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party <span class="iconify"
+              data-icon="ion:people-outline" data-inline="false" style="float:right;" data-width="20px"
+              data-height="20px"></span></a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">This Is Opeth</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Metal Ballads</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">New Playlist</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Your Top Songs 2018</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jazz Classics Blue Note Editi</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>
+
+
         </li>
 
       </ul>
 
       <footer>
-        <p id="installapp"> <span class="iconify mr-2" data-icon="bi:arrow-down-circle" data-inline="false" data-width="20" data-height="20"></span>Install App</p>
+        <p id="installapp"> <span class="iconify mr-2" data-icon="bi:arrow-down-circle" data-inline="false"
+            data-width="20" data-height="20"></span>Install App</p>
       </footer>
 
 
@@ -762,28 +817,33 @@ body{
           </div>
 
           <div class="useraccount d-none d-lg-block">
-            <span class="iconify personimage" data-icon="bi:person-circle" data-inline="false" data-width="26" data-height="26"></span>
+            <span class="iconify personimage" data-icon="bi:person-circle" data-inline="false" data-width="26"
+              data-height="26"></span>
             <span class="persontext">User Name</span>
-            <span class="iconify downarrow" data-icon="bx:bxs-down-arrow" data-inline="true" style="color: white;" data-width="10" data-height="10"></span>
+            <span class="iconify downarrow" data-icon="bx:bxs-down-arrow" data-inline="true" style="color: white;"
+              data-width="10" data-height="10"></span>
           </div>
         </div>
-        
-        
-          
+
+
+
       </div>
 
-        <div class="container-fluid bodycontent pl-4">
+      <div class="container-fluid bodycontent pl-4">
         <p class="morningtext mt-5">Good morning</p>
-           
-    
 
-         
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-5" style="margin-right:15px; padding-right:15px;">
-            <div class="col pr-2">
+
+
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-5"
+          style="margin-right:15px; padding-right:15px;">
+          <div class="col pr-2">
             <div class="card morningcard mb-3">
               <div class="row no-gutters">
                 <div class="col-md-3">
-                  <img class="card-img morningimg" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440" alt="...">
+                  <img class="card-img morningimg"
+                    src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/artistic-album-cover-design-template-d12ef0296af80b58363dc0deef077ecc_screen.jpg?ts=1561488440"
+                    alt="...">
                 </div>
                 <div class="col-md-9">
                   <div class="card-body ml-2">
@@ -811,7 +871,8 @@ body{
             <div class="card morningcard mb-3">
               <div class="row no-gutters">
                 <div class="col-md-3">
-                  <img class="card-img morningimg" src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
+                  <img class="card-img morningimg"
+                    src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
                 </div>
                 <div class="col-md-9">
                   <div class="card-body ml-2">
@@ -825,7 +886,8 @@ body{
             <div class="card morningcard mb-3">
               <div class="row no-gutters">
                 <div class="col-md-3">
-                  <img class="card-img morningimg" src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
+                  <img class="card-img morningimg"
+                    src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
                 </div>
                 <div class="col-md-9">
                   <div class="card-body ml-2">
@@ -840,7 +902,8 @@ body{
             <div class="card morningcard mb-3">
               <div class="row no-gutters">
                 <div class="col-md-3">
-                  <img class="card-img morningimg" src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
+                  <img class="card-img morningimg"
+                    src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
                 </div>
                 <div class="col-md-9">
                   <div class="card-body ml-2">
@@ -854,7 +917,8 @@ body{
             <div class="card morningcard mb-3">
               <div class="row no-gutters">
                 <div class="col-md-3">
-                  <img class="card-img morningimg" src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
+                  <img class="card-img morningimg"
+                    src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
                 </div>
                 <div class="col-md-9">
                   <div class="card-body ml-2">
@@ -868,7 +932,8 @@ body{
             <div class="card morningcard mb-3">
               <div class="row no-gutters">
                 <div class="col-md-3">
-                  <img class="card-img morningimg" src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
+                  <img class="card-img morningimg"
+                    src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
                 </div>
                 <div class="col-md-9">
                   <div class="card-body ml-2">
@@ -882,7 +947,8 @@ body{
             <div class="card morningcard mb-3">
               <div class="row no-gutters">
                 <div class="col-md-3">
-                  <img class="card-img morningimg" src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
+                  <img class="card-img morningimg"
+                    src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
                 </div>
                 <div class="col-md-9">
                   <div class="card-body ml-2">
@@ -896,7 +962,8 @@ body{
             <div class="card morningcard mb-3">
               <div class="row no-gutters">
                 <div class="col-md-3">
-                  <img class="card-img morningimg" src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
+                  <img class="card-img morningimg"
+                    src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
                 </div>
                 <div class="col-md-9">
                   <div class="card-body ml-2">
@@ -910,7 +977,8 @@ body{
             <div class="card morningcard mb-3">
               <div class="row no-gutters">
                 <div class="col-md-3">
-                  <img class="card-img morningimg" src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
+                  <img class="card-img morningimg"
+                    src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt="...">
                 </div>
                 <div class="col-md-9">
                   <div class="card-body ml-2">
@@ -920,23 +988,23 @@ body{
               </div>
             </div>
           </div>
-          </div>
-              
-          
         </div>
-        <div class="container-fluid mt-5">
 
-          <section>
 
-            <div class=" d-flex align-items-center justify-content-between">
-              <h5 class="font-weight-bold text-white ">Recently played</h5>
-              <small class="text-white font-weight-bold text-muted">SEE ALL</small>
-            </div>
-    
-    
-            <div class="row row-cols-lg-auto text-white mt-3">
-              <div class="col mb-4">
-                <a href="/albumpage.html" class="custom-card">
+      </div>
+      <div class="container-fluid mt-5">
+
+        <section>
+
+          <div class=" d-flex align-items-center justify-content-between">
+            <h5 class="font-weight-bold text-white ">Recently played</h5>
+            <small class="text-white font-weight-bold text-muted">SEE ALL</small>
+          </div>
+
+
+          <div class="row row-cols-lg-auto text-white mt-3">
+            <div class="col mb-4">
+              <a href="/albumpage.html" class="custom-card">
                 <div class="card p-2 bg-customdark">
                   <img src="/Bohemian_Rhapsody_album.jpg" class="card-img-top" alt="...">
                   <div class="card-body" style="max-height:70px;">
@@ -945,10 +1013,10 @@ body{
                   </div>
                 </div>
               </a>
-              </div>
-     
-              <div class="col mb-4">
-                <a href="/artistpage.html" class="custom-card">
+            </div>
+
+            <div class="col mb-4">
+              <a href="/artistpage.html" class="custom-card">
                 <div class="card p-2 bg-customdark">
                   <img src="/200defleppard-optical.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
@@ -957,220 +1025,224 @@ body{
                   </div>
                 </div>
               </a>
-              </div>
-    
-              <div class="col mb-4 d-none d-md-block">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col mb-4 d-none d-lg-block">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col mb-4 d-none d-lg-block">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col mb-4 d-none d-xl-block">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col mb-4 d-none xxlGrid">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col d-none xxlGrid">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
             </div>
-    
-          </section>
-    
-          <section>
-    
-            <div class="d-flex align-items-center justify-content-between">
-    
-              <h5 class="font-weight-bold text-white">Shows to try</h5>
-              <small class="text-white font-weight-bold text-muted">SEE ALL</small>
-    
-            </div>
-            <small class="text-white font-weight-bold vw-100">Podcasts we think you'll get hooked on.</small>
-    
-    
-            <div class="row row-cols-lg-auto text-white mt-3 ">
-              <div class="col mb-4">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col mb-4">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col mb-4 d-none d-md-block">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col mb-4 d-none d-lg-block">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col mb-4 d-none d-lg-block">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col mb-4 d-none d-xl-block">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col mb-4 d-none xxlGrid">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col d-none xxlGrid">
-                <div class="card p-2 bg-customdark">
-                  <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Artist Name</h5>
-                    <p class="card-text"></p>
-                  </div>
-                </div>
-              </div>
-    
-            </div>
-          </section>
-          <section class="music-controls container-fluid justify-content-center">
-            <div class="row music-controls-row justify-content-center;">
-                <div class="col col-lg-1 m-controls_album-image">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpKTAXHEgak92e3DVFrGplVV23I2KRShQInV3WBRU&usqp=CAE&s" alt="album image">
-                </div>
-                <div class= "col col-lg-1 m-controls_album-artist_title">
-                    <h6>Holding On</h6>
-                    <p class="footerp">Technimatic</p>
-                </div>
-                <div class="col col-lg-1 m-controls_like">
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-bounding-box-circles"></i>
-                </div>
-                <div class="col col-lg-5 music-controls_controls">
-                    <div class="m-controls_controls">
-                        <ul class="d-flex">
-                            <li class="footerli"><i class="bi bi-shuffle"></i>
-                            </li>
-                            <li class="footerli"><i class="bi bi-skip-start-fill"></i>
-                            </i>
-                            </li>
-            
-                            <li id="play" class="grow footerli"><div class="play_triangle"></div>
-                            </li>
-                            <li class="footerli"><i class="bi bi-skip-end-fill"></i>
-                            </i>
-                            </li>
-                           
-            
-                            <li class="footerli">
-                            </li>
-                            <li class="footerli"><i class="bi bi-arrow-repeat"></i></li>
-                        </ul>
-                    </div>
-                    <div class="m-controls_duration">
-                        <hr>
-                    </div>
-                </div>
-                <div class="col col-lg-4 m-controls-extra d-flex justify-content-end">
-                    <ul>
-                        <li class="footerli"><i class="bi bi-justify-left"></i>
-                        </li>
-                        <li class="footerli"><i class="bi bi-phone"></i>
-                        </li>
-                        <li class="footerli"><i class="bi bi-volume-up"></i>
-                        </li>
-                        <li class="footerli"><input type="range" min="1" max="100" value="50" class="slider" id="volumeControl">
-                        </li>
-                        <li class="footerli"><i class="bi bi-arrows-angle-expand"></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>    
-            </section>
 
-  </body>
+            <div class="col mb-4 d-none d-md-block">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4 d-none d-lg-block">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4 d-none d-lg-block">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4 d-none d-xl-block">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4 d-none xxlGrid">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-none xxlGrid">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section>
+
+          <div class="d-flex align-items-center justify-content-between">
+
+            <h5 class="font-weight-bold text-white">Shows to try</h5>
+            <small class="text-white font-weight-bold text-muted">SEE ALL</small>
+
+          </div>
+          <small class="text-white font-weight-bold vw-100">Podcasts we think you'll get hooked on.</small>
+
+
+          <div class="row row-cols-lg-auto text-white mt-3 ">
+            <div class="col mb-4">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4 d-none d-md-block">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4 d-none d-lg-block">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4 d-none d-lg-block">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4 d-none d-xl-block">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4 d-none xxlGrid">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col d-none xxlGrid">
+              <div class="card p-2 bg-customdark">
+                <img src="https://picsum.photos/100" class="card-img-top grid2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Artist Name</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+        <section class="music-controls container-fluid justify-content-center">
+          <div class="row music-controls-row justify-content-center;">
+            <div class="col col-lg-1 m-controls_album-image">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpKTAXHEgak92e3DVFrGplVV23I2KRShQInV3WBRU&usqp=CAE&s"
+                alt="album image">
+            </div>
+            <div class="col col-lg-1 m-controls_album-artist_title">
+              <h6>Holding On</h6>
+              <p class="footerp">Technimatic</p>
+            </div>
+            <div class="col col-lg-1 m-controls_like">
+              <i class="bi bi-heart"></i>
+              <i class="bi bi-bounding-box-circles"></i>
+            </div>
+            <div class="col col-lg-5 music-controls_controls">
+              <div class="m-controls_controls">
+                <ul class="d-flex">
+                  <li class="footerli"><i class="bi bi-shuffle"></i>
+                  </li>
+                  <li class="footerli"><i class="bi bi-skip-start-fill"></i>
+                    </i>
+                  </li>
+
+                  <li id="play" class="grow footerli">
+                    <div class="play_triangle"></div>
+                  </li>
+                  <li class="footerli"><i class="bi bi-skip-end-fill"></i>
+                    </i>
+                  </li>
+
+
+                  <li class="footerli">
+                  </li>
+                  <li class="footerli"><i class="bi bi-arrow-repeat"></i></li>
+                </ul>
+              </div>
+              <div class="m-controls_duration">
+                <hr>
+              </div>
+            </div>
+            <div class="col col-lg-4 m-controls-extra d-flex justify-content-end">
+              <ul>
+                <li class="footerli"><i class="bi bi-justify-left"></i>
+                </li>
+                <li class="footerli"><i class="bi bi-phone"></i>
+                </li>
+                <li class="footerli"><i class="bi bi-volume-up"></i>
+                </li>
+                <li class="footerli"><input type="range" min="1" max="100" value="50" class="slider" id="volumeControl">
+                </li>
+                <li class="footerli"><i class="bi bi-arrows-angle-expand"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+</body>
+
 </html>
