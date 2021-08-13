@@ -724,44 +724,38 @@
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content"
+            style="
+          background: #ff0084;  /* fallback for old browsers */
+          background: -webkit-linear-gradient(to right, #33001b, #ff0084);  /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to right, #33001b, #ff0084); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Search</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Search Albums or Artists</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <input type="text" placeholder="Search for album or artist" class="form-control" id="searchModal"
-                oninput=searchAlbumArtist(this.value)>
+              <input type="text" placeholder="Search" class="form-control" id="searchModal"
+                oninput=getAlbumAndArtist(this.value)>
             </div>
             <div class="modal-footer">
 
               <div class="container d-flex flex-wrap mx-5">
-                <h3 class="text-center text-dark m-5">Albums and Artists Lists</h3>
 
                 <div class="mb-5">
-                  <h4 class="text-center border-bottom text-dark">Albums</h4>
+                  <h2 class="text-center border-bottom text-light">Albums</h2>
                   <div id="album-list" class="row">
                   </div>
                 </div>
                 <div>
-                  <h4 class="text-center border-bottom text-dark">Artist</h4>
+                  <h2 class="text-center border-bottom text-light">Artist</h2>
                   <div id="artist-list" class="row"></div>
                 </div>
 
               </div>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
-
-
-
-
-
-
-
-
-              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
           </div>
         </div>
@@ -845,15 +839,10 @@
           </div>
         </div>
 
-
-
       </div>
 
       <div class="container-fluid bodycontent pl-4">
         <p class="morningtext mt-5">Good morning</p>
-
-
-
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-5"
           style="margin-right:15px; padding-right:15px;">
@@ -1264,6 +1253,8 @@
         </section>
 
         <script>
+
+
           const getAlbumAndArtist = (query) => {
             fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`)
               .then((response) => response.json())
@@ -1273,6 +1264,7 @@
 
                 console.log(body.data)
               })
+              .catch((error) => { error })
           }
 
           const displayAlbum = (data) => {
@@ -1280,13 +1272,13 @@
             album.innerHTML = ""
             data.map(item => {
               album.innerHTML += `
-<div class="card m-3" style="width: 8rem;">
-  <img src="${item.album.cover_small}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <span class="card-title text-dark" style="font-size: 12px;">${item.album.title}</span>
-  </div>
-</div>
-    `
+          <div class="card m-3" style="width: 8rem;">
+        <img src="${item.album.cover_small}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <span class="card-title text-light" style="font-size: 12px;">${item.album.title}</span>
+        </div>
+        </div>
+         `
               console.log(item.album)
             })
           }
@@ -1297,12 +1289,12 @@
             data.map(itm => {
               artist.innerHTML += `
               <div class="card m-3" style="width: 8rem;">
-  <img src="${itm.artist.picture_small}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <span class="card-title text-dark" style="font-size: 12px;">${itm.artist.name}</span>
-  </div>
-</div>
-    `
+         <img src="${itm.artist.picture_small}" class="card-img-top" alt="...">
+         <div class="card-body">
+         <span class="card-title text-light" style="font-size: 12px;">${itm.artist.name}</span>
+        </div>
+        </div>
+          `
               console.log(itm.artist)
             })
           }
