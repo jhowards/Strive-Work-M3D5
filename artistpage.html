@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <title>Spotify Clone</title>
+    <script src="/scripts/artist.js"></script>
 
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
@@ -27,8 +28,12 @@ body{
     margin: 0px;
     font-family: "Montserrat", sans-serif;
 }
+  .table{
+    font-size: 15px;
+    line-height:23px;
+    font-weight: 500;
+  }
 
-    
       .sidebar {
         background-color: black;
         color: rgb(166, 166, 166);
@@ -452,8 +457,8 @@ body{
         }
 
         .picture_frame img{
-            height:45px;
-            width:35px;
+            height:40px;
+            width:40px;
             object-fit: cover;
            
         }
@@ -715,10 +720,11 @@ body{
             } 
 
             .artist_title{
-            background-image: url(./assests/imgs/Queen-Jumbo.jpg);
+            background-image: url();
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
+            background-position: center;
             height:45vh;
             width:100%;
         }
@@ -843,12 +849,12 @@ body{
 
 <div class=" bodycontent artist-page">
                 
-    <div class="artist_title">
+    <div class="artist_title" id="headerImage">
         <div class="artist_title-column">
           <h6>  <span class="blue-icon"><img src="./assests/imgs/Verify.svg" width="3%" alt="verified artist"> Verified Artist</span></h6>
                 <div class="h1-artist">
-                    <h1><strong>Artist Name</strong></h1>
-                         <p>Number of Monthly Listeners</p>
+                    <h1 id="artistName"><strong></strong></h1>
+                         <p id="monthly">37,120,733 monthly listeners</p>
                         </div> 
                             </div>
                                 </div>
@@ -869,7 +875,20 @@ body{
           <section class="music-artist-most-listened">
 
             <h3>Popular</h3>
-              <div class="row most-listened">
+            <table class="table text-light table-borderless ml-5 mr-5">
+              <!-- <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead> -->
+              <tbody id="popularTable">
+
+              </tbody>
+            </table>
+              <!-- <div class="row most-listened">
                   <div class="col-1">1</div>
                   <div class="col-1 picture_frame"><img src="https://i.scdn.co/image/ab67706f000000036f39cc1479a845dcc9e7c54b" alt=""></div>
                   <div class="col-4">Song Title</div>
@@ -924,7 +943,7 @@ body{
                 <div class="col-4">Song Title</div>
                 <div class="col">Total Listens</div>
                 <div class="col">Song Duration</div>
-              </div> 
+              </div>  -->
             </div> 
           </section>
         </div>
