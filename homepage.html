@@ -721,10 +721,6 @@
         </li>
       </ul>
 
-      <div class="modal-dialog modal-lg">Search artist</div>
-
-
-
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -1243,6 +1239,25 @@
           </div>
         </section>
 
+        <script>
+          const getAlbumAndArtist = (query) => {
+            fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`)
+              .then((response) => response.json())
+              .then(body => {
+                displayAlbumOrArtist(body.data)
+                console.log(body.data)
+              })
+          }
+
+          const displayAlbumOrArtist = (data) => {
+            data.map(item => {
+              console.log(item.artist)
+            })
+          }
+          window.onload = () => {
+            getAlbumAndArtist()
+          }
+        </script>
 </body>
 
 </html>
