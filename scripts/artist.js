@@ -1,12 +1,33 @@
 window.onload = function () {
   let artistTitle = sessionStorage.getItem("artisttitle");
+  let id = sessionStorage.getItem("id");
   console.log(artistTitle);
+
   grabAPI(artistTitle);
+  grabArtistData(id);
 
   const artistName = document.getElementById("artistName");
   artistName.innerText = capitalize(artistTitle);
 };
 
+const grabArtistData = (id) => {
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/" + id, {
+    method: "GET",
+  })
+    .then((resp) => {
+      return resp.json();
+    })
+    .then((artist) => {
+      console.log(artist);
+
+      const headerImage = document.getElementById("headerImage");
+      const image = artist.picture_xl;
+      headerImage.style.backgroundImage = ` linear-gradient(
+        rgba(10, 10, 10, 0.25), 
+        rgba(10, 10, 10, 0.25)
+      ),url("${image}")`;
+    });
+};
 const grabAPI = (title) => {
   fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + title, {
     method: "GET",
@@ -23,13 +44,6 @@ const grabAPI = (title) => {
       listeners2 = listeners.toLocaleString();
 
       monthlyListeners.innerText = listeners2 + " monthly listeners";
-
-      const headerImage = document.getElementById("headerImage");
-      const image = artist.data[0].artist.picture_xl;
-      headerImage.style.backgroundImage = ` linear-gradient(
-        rgba(10, 10, 10, 0.25), 
-        rgba(10, 10, 10, 0.25)
-      ),url("${image}")`;
 
       for (let i = 0; i < artist.data.length; i++) {
         if (i == songsToDisplay) {
@@ -50,10 +64,10 @@ const grabAPI = (title) => {
 
         tableImg.classList.add("picture_frame");
         tableImg.classList.add("px-0");
-        let image = artist.data[i].album.cover_small;
+        let image = artist.data[i + 2].album.cover_small;
         tableImg.innerHTML = `<img src="${image}" alt=""></img>`;
 
-        songTitle.innerText = artist.data[i].title;
+        songTitle.innerText = artist.data[i + 2].title;
         songTitle.classList.add("w-50");
         songTitle.classList.add("px-1");
 
@@ -62,7 +76,7 @@ const grabAPI = (title) => {
 
         songListens.innerText = listens;
 
-        let time = artist.data[i].duration;
+        let time = artist.data[i + 2].duration;
         let time2 = Math.floor(time % 60);
 
         if (time2.toString().length < 2) {

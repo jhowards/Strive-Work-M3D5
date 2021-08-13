@@ -20,8 +20,12 @@
 
     <title>Spotify Clone</title>
     <script>
-      let artistTitle = "Queen";
-      sessionStorage.setItem("artisttitle", artistTitle);</script>
+      let artistTitle = "Madonna";
+      let id = 290
+      sessionStorage.setItem("id", id);
+      sessionStorage.setItem("artisttitle", artistTitle);
+      
+      </script>
     
 
     <style>
@@ -693,6 +697,15 @@ body{
                   object-fit: cover;
                   margin-right:3px;
                 }
+
+                .artistLink{
+                  cursor: pointer;
+                  font-weight: 700;
+                  font-size:13px;
+                }
+                .artistLink:hover{
+                  text-decoration: underline;
+                }
     </style>
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
   </head>
@@ -709,9 +722,8 @@ body{
     ></script>
 
 <script>
-      let artistTitle = "Queen";
+      let artistTitle = "Madonna";
       sessionStorage.setItem("artisttitle", artistTitle);</script>
-
 <script>
 
 function showAlbumInfo(albumInfo) {
@@ -873,7 +885,7 @@ function changeStyle() {
                 <h5 class="albumcovertext" style="font-size:13px; font-weight:700;">ALBUM</h5>
                 <h1 id="madonnaTitle" class="albumcovertext" style="letter-spacing: -1px;">Bohemian Rhapsody (The Original Soundtrack)</h1>
                 <span style="padding-right:3px; padding-top: 3px; display:inline-block;"><img id="madonnaPicture" class="queensmallImg" src="/queenband.jfif"></img></span>
-                <span id="madonnaName" class="albumcovertext mr-2" style="font-size:13px; font-weight:700;">Queen</span><span class="albumcovertextsmall">• 2018 • 22 songs, 1 hr 19 min</span>
+                <span onclick="window.location.href='/artistpage.html';" id="madonnaName" class="albumcovertext mr-2 artistLink" style="font-size:13px; font-weight:700;">Madonna</span><span class="albumcovertextsmall">• 2018 • 22 songs, 1 hr 19 min</span>
             </div>
        
           </div>
