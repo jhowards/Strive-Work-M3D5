@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+
+    <title>Spotify Clone</title>
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+body{ 
+    background-color:rgb(18,18,18);
+}
+      .sidebar {
+        background-color: black;
+        /* height: 725px; */
+        /* height: 85vh; */
+        width: 240px;
+        position: fixed;
+        z-index: 1000;
+        color: rgb(166, 166, 166);
+        padding-top: 25px;
+        padding-left: 10px;
+        padding-right: 3px;
+        font-family: "Montserrat", sans-serif;
+      }
+      .logo {
+        height: 40px;
+        filter: invert(100%);
+        margin-left: 12px;
+        margin-bottom: 25px;
+      }
+
+      .sidebar-nav {
+        list-style-type: none;
+        padding: 0;
+        font-size: 13px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        line-height: 16px;
+      }
+      a {
+        color: inherit;
+      }
+      a:hover {
+        color: inherit;
+        text-decoration: none;
+      }
+      .sidelist {
+        display: flex;
+        height: 40px;
+        width: 220px;
+        border-radius: 4px;
+        align-items: center;
+      }
+
+      .sidelist:hover {
+        display: flex;
+        height: 40px;
+        width: 220px;
+        
+        border-radius: 4px;
+        color:white;
+      }
+    
+      .sidelistcurrent{
+          display: flex;
+        height: 40px;
+        width: 220px;
+        border-radius: 4px;
+        align-items: center;
+        background-color: rgb(66, 66, 66);
+        color:white;
+      }
+      .sidelistcurrent:hover{
+          display: flex;
+        height: 40px;
+        width: 220px;
+        border-radius: 4px;
+        align-items: center;
+        background-color: rgb(66, 66, 66);
+        color:white;
+      }
+      .navitem {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .sidebar hr{
+          background-color:rgb(70, 70, 70);
+          width:87%;
+          margin-top: 0.8rem;
+          margin-bottom: 0rem;
+      }
+
+      .sidebar-playlists{
+          
+          list-style-type: none;
+          padding: 0;
+         font-size: 13px;
+          margin: 0;
+          padding: 0;
+          height: 53vh;
+          overflow-y: auto;
+   
+      }
+
+      .sideplaylist{
+        margin-top: 0.8rem;
+        padding-left: 14px;
+        padding-right: 14px;
+        line-height: 20px;
+        font-size: 13px;
+        margin-bottom: 10px;
+        font-weight:500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+   
+      #installapp{
+          bottom: 0;
+          left: 0;
+          padding-left:15px;
+          font-weight:bold;
+          font-size: 13px;
+      }
+
+      #installapp:hover{
+          color:white;
+          bottom: 0;
+          left: 0;
+          padding-left:15px;
+          font-weight:bold;
+          font-size: 13px;
+      }
+
+      ::-webkit-scrollbar {
+         width: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color:rgb(73, 73, 73);
+        }
+
+        #heart{
+            display: inline-block;
+            position:relative;
+            padding-left: 14px;
+        }
+        #heartbox{
+            display:relative;
+            height:24px;
+            width: 24px;
+            background: rgb(55,21,170);
+            background: linear-gradient(148deg, rgba(55,21,170,1) 20%, rgba(133,112,203,1) 66%, rgba(165,153,221,1) 100%);
+            
+        }
+        .heartshape{
+            position:absolute;
+            top: 33%;
+            left: 52%;
+            
+        }
+
+        .playlistitem:hover{
+        color:white;
+        }
+     
+    </style>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+  </head>
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <a href="#"><img src="spotifylogo.svg" alt="Spotify Logo" class="logo"></a>
+      </div>
+
+      <ul class="sidebar-nav flex-column">
+        <li class="sidelistcurrent"><a class="navitem" href="#"><span class="iconify mr-3" data-icon="el:home" data-inline="false" data-width="20px" data-height="20px"></span>Home</a></li>
+        <li class="sidelist"><a class="navitem" href="#"><span class="iconify mr-3" data-icon="akar-icons:search" data-inline="false" data-width="20" data-height="20"></span>Search</a></li>
+        <li class="sidelist"><a class="navitem" href="#"><img style="height: 24px; width: 24px; margin:0; margin-right:12px;" src="libraryicon.svg" alt="Library Icon" />Your Library</a></li>
+        <br />
+        <li class="sidelist mt-2">
+          <a class="navitem" href="#"><span class="iconify createicon" data-icon="bi:plus-square-fill" data-inline="false" data-width="24" data-height="24" style="margin-right: 14px;"></span>Create Playlist</a>
+        </li>
+        <li class="sidelist"> <span id="heart">
+            <div id="heartbox">
+                    <span class="iconify heartshape" data-icon="bi:heart-fill" data-inline="false" data-width="11" data-height="11"></span> 
+            </div>
+        </span>
+            <a class="navitem" href="#">
+           Liked Songs</a></li>
+      </ul>
+
+      <hr></hr>
+
+    <ul class="sidebar-playlists flex-column mb-2">
+        <li class="sideplaylist"><a class="playlistitem" href="#">Funky Heavy Bluesy</a></li>
+        <li class="sideplaylist"><a class="playlistitem" href="#">Your Top Songs 2020</a></li>
+        <li class="sideplaylist"><a class="playlistitem" href="#">In Love With You - Erykah Badu</a>
+        <li class="sideplaylist"><a class="playlistitem" href="#">This Is Rod Stewart</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">FRANCHISE ft. Young Thug & M.I.A.</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Your Top Songs 2019</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Palleggio</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">This Is Joe Bonamassa</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jun19</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party 2 <span class="iconify" data-icon="ion:people-outline" data-inline="false" style="float:right;" data-width="20px" data-height="20px"></span></a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party <span class="iconify" data-icon="ion:people-outline" data-inline="false" style="float:right;" data-width="20px" data-height="20px"></span></a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">This Is Opeth</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Metal Ballads</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">New Playlist</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Your Top Songs 2018</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jazz Classics Blue Note Editi</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+        <li class="sideplaylist"><a class="playlistitem" href="#">Jack 30th Party</a>    
+       
+        
+        </li>
+        
+        
+      </ul>
+
+      <footer style="position:sticky;">
+        <p id="installapp"> <span class="iconify mr-2" data-icon="bi:arrow-down-circle" data-inline="false" data-width="20" data-height="20"></span>Install App</p>
+      </footer>
+    </div>
+  </body>
+</html>

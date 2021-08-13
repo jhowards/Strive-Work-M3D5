@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Login Page</title>
+    <!-- IMPORT ALL THE BOOTSTRAP RELATED CSS & SCRIPTS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+    <style>
+        body {
+            text-align: center;
+            margin: auto;
+        }
+
+        .logo {
+            width: 200px;
+            margin-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .btn-facebook,
+        .btn-apple,
+        .btn-signup {
+            text-align: center;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            min-width: 30em;
+            padding: 1rem;
+            margin: -3px;
+        }
+
+        .btn-apple {
+            background-color: black;
+
+        }
+
+        svg {
+            color: white;
+        }
+
+
+        .btn-signup {
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: 2px solid;
+            margin-top: 1rem;
+        }
+
+        .btn-login {
+            border-radius: 50px;
+            padding: 10px 70px 10px 70px;
+            font-weight: 600;
+        }
+
+
+
+
+
+        /*-----horozontal line with word in the middle------*/
+
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #000;
+        }
+
+        .separator:not(:empty)::before {
+            margin-right: .25em;
+        }
+
+        .separator:not(:empty)::after {
+            margin-left: .25em;
+        }
+
+        /*----USERNAME/PASSWORD----*/
+
+        .user {
+            width: 450px;
+            margin: auto;
+        }
+
+        .line-size {
+            width: 500px;
+        }
+
+        .footer-txt {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img class="logo" src="assests/imgs/spotifyLogo.png" alt="spotify-logo">
+    <hr>
+    <div class="container">
+
+        <h6 class="bold font-weight-bold "> To continue log in, to spotify.</h6>
+
+        <div class="d-flex flex-column">
+
+            <div class="p-2 bd-highlight">
+
+                <a href="/homepage.html"><button type="button" class="btn btn-primary btn-facebook">
+                    <span class="iconify mr-2" data-icon="akar-icons:facebook-fill" data-inline="false" style="color: white;" data-width="24" data-height="24"></span>
+                    Continue with Facebook</button></a>
+
+            </div>
+
+            <div class="p-2 bd-highlight">
+
+                <a href="#"></a><button type="button" class="btn text-white btn-apple">
+                    <span class="iconify" data-icon="ant-design:apple-filled" data-inline="false" style="color: white;" data-width="24" data-height="24"></span>
+                    continue with apple</button>
+
+
+            </div>
+
+        <div class="separator text-muted mt-2 mb-2">OR</div>
+
+        <form class="user d-flex flex-column">
+            <div class="form-group">
+                <input type="text" class="form-control" id="formGroupExampleInput"
+                    placeholder="Email address or username">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted "><input class="mr-1" type="checkbox"> Remember me</span>
+
+
+                <button type="button" class="btn btn-success btn-login">LOG IN</button>
+            </div>
+
+
+
+            <a class="text-success" href="#">Forgot your password?</a>
+        </form>
+
+        <div class="mt-5">
+            <hr class="line-size">
+
+            <h6 class="bold font-weight-bold mt-5">Don't have an account?</h6>
+
+            <button type="button" class="btn btn-signup bg-transparent text-muted">Sign up for
+                spotify</button>
+
+        </div>
+
+        <hr class="line-size">
+
+        <small>if you click "Log in with Facebook" and not a Spotify user, you will be registered and <br>
+            you agree to Spotify's <span class="footer-txt">Terms & Conditions</span> and <span
+                class="footer-txt">Privacy Policy</span></small>
+
+
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
