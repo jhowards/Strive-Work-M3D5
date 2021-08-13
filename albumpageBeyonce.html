@@ -713,10 +713,10 @@ body{
 <script>
 
 function showAlbumInfo(albumInfo) {
-  let albumImage = document.getElementById("madonnaImage")
+  let albumImage = document.getElementById("beyonceImage")
   albumImage.src = albumInfo.cover_medium
 
-  let albumTitle = document.getElementById("madonnaTitle")
+  let albumTitle = document.getElementById("beyonceTitle")
   albumTitle.innerText = albumInfo.title
 
   let artistName = document.getElementsByTagName("span")
@@ -728,7 +728,7 @@ function showAlbumInfo(albumInfo) {
     artistName[i].innerText = albumInfo.artist.name
   }
 
-  let artistPicture = document.getElementById("madonnaPicture")
+  let artistPicture = document.getElementById("beyoncePicture")
   artistPicture.src = albumInfo.artist.picture_small
 
   let songTitle = document.getElementsByClassName("titletext")
@@ -743,7 +743,7 @@ function showAlbumInfo(albumInfo) {
 }
 
 window.addEventListener('load', event => {
-  fetch("https://striveschool-api.herokuapp.com/api/deezer/album/80554")
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/album/250046")
   .then( response => response.json())
   .then(albumInfo => {
     console.log(albumInfo)
@@ -866,12 +866,12 @@ function changeStyle() {
 
 
           <div class="container-fluid p-0 coverbox" >
-            <img id="madonnaImage" src="/Bohemian_Rhapsody_album.jpg" class="img-fluid bohemian" alt="Bohemian Rhapsody Album Cover">
+            <img id="beyonceImage" src="/Bohemian_Rhapsody_album.jpg" class="img-fluid bohemian" alt="Bohemian Rhapsody Album Cover">
             <div class="covertextbox">
                 <h5 class="albumcovertext" style="font-size:13px; font-weight:700;">ALBUM</h5>
-                <h1 id="madonnaTitle" class="albumcovertext" style="letter-spacing: -1px;">Bohemian Rhapsody (The Original Soundtrack)</h1>
-                <span style="padding-right:3px; padding-top: 3px; display:inline-block;"><img id="madonnaPicture" class="queensmallImg" src="/queenband.jfif"></img></span>
-                <span id="madonnaName" class="albumcovertext mr-2" style="font-size:13px; font-weight:700;">Queen</span><span class="albumcovertextsmall">• 2018 • 22 songs, 1 hr 19 min</span>
+                <h1 id="beyonceTitle" class="albumcovertext" style="letter-spacing: -1px;">Bohemian Rhapsody (The Original Soundtrack)</h1>
+                <span style="padding-right:3px; padding-top: 3px; display:inline-block;"><img id="beyoncePicture" class="queensmallImg" src="/queenband.jfif"></img></span>
+                <span id="abbaName" class="albumcovertext mr-2" style="font-size:13px; font-weight:700;">Queen</span><span class="albumcovertextsmall">• 2018 • 22 songs, 1 hr 19 min</span>
             </div>
        
           </div>
